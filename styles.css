@@ -1,0 +1,115 @@
+:root {
+  color-scheme: light dark;
+  --bg: #0b0c0f;
+  --fg: #eaeaea;
+  --muted: #9aa0a6;
+  --accent: #2d7ff9;
+}
+
+* { box-sizing: border-box; }
+
+body {
+  margin: 0;
+  font-family: system-ui, -apple-system, sans-serif;
+  background: var(--bg);
+  color: var(--fg);
+}
+
+.page-header {
+  max-width: 1100px;
+  margin: 24px auto 12px;
+  padding: 0 16px;
+  text-align: center;
+}
+
+/* --- Swiper Container --- */
+.swiper {
+  max-width: 1400px; /* Deine gewählte Breite */
+  width: 95vw;
+  margin-left: auto;  /* Zwingt die Zentrierung */
+  margin-right: auto; /* Zwingt die Zentrierung */
+  padding-bottom: 60px;
+}
+
+/* Links für die Lightbox neutralisieren */
+.swiper-slide {
+  display: flex;
+  justify-content: center; /* Zentriert das Bild horizontal */
+  align-items: center;     /* Zentriert das Bild vertikal */
+}
+
+/* --- Karten-Design --- */
+figure {
+  margin: 0;
+  width: 100%;
+  border-radius: 15px; 
+  background: #111319;
+  border: 1px solid #20232c;
+  overflow: hidden;
+  box-shadow: 0 8px 24px rgba(0,0,0,.25);
+  transition: transform 0.2s ease-in-out, border-color 0.2s;
+  cursor: zoom-in; /* Zeigt an, dass man klicken kann */
+}
+
+/* Effekt beim Drüberfahren (Hover) */
+figure:hover {
+  transform: translateY(-5px);
+  border-color: var(--accent);
+}
+
+figure img {
+  display: block;
+  width: 100%;
+  height: 550px; /* Deine gewünschten ~15cm */
+  object-fit: contain;
+  background: #000;
+}
+
+figcaption {
+  padding: 12px 14px;
+  font-size: 0.9rem;
+  font-weight: 500;
+  color: #c9d1d9;
+  border-top: 1px solid #20232c;
+  background: #0f1117;
+  text-align: center;
+}
+
+/* --- Navigation & Buttons --- */
+.swiper-button-prev, .swiper-button-next {
+  color: var(--fg);
+  transform: scale(0.7); /* Dezentere Pfeile */
+  filter: drop-shadow(0 2px 4px rgba(0,0,0,0.5));
+}
+
+.swiper-pagination-bullet { 
+  background: #555; 
+  opacity: 1; 
+}
+
+.swiper-pagination-bullet-active { 
+  background: var(--accent); 
+}
+
+/* --- Mobile Optimierung (Smartphone) --- */
+@media (max-width: 600px) {
+  .swiper {
+    width: 100vw; /* Volle Breite am Handy */
+  }
+
+  figure {
+    border-radius: 10px;
+    border-left: none;
+    border-right: none;
+  }
+
+  figure img {
+    height: auto;
+    max-height: 65vh; /* Verhindert, dass das Bild den ganzen Screen füllt */
+  }
+
+  .swiper-button-next, 
+  .swiper-button-prev {
+    display: none; /* Wischen ist am Handy intuitiver als Pfeile */
+  }
+}
